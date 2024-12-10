@@ -7,10 +7,11 @@ import it.network.note.dto.mapper.NoteMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Service
-public class NoteServiceImpl implements NoteService{
+public class NoteServiceImpl {
 
     @Autowired
     private NoteMapper noteMapper;
@@ -18,40 +19,43 @@ public class NoteServiceImpl implements NoteService{
     @Autowired
     private NoteRepository noteRepository;
 
-    @Override
+
     public void create(NoteDTO noteDTO) {
         NoteEntity newNote = noteMapper.toEntity(noteDTO);
         noteRepository.save(newNote);
     }
 
-    @Override
+    public void addNewNote(NoteDTO noteDTO) {
+
+    }
+
+
     public List<NoteDTO> getAll() {
-        return StreamSupport.stream(noteRepository.findAll().spliterator(),false)
+        return StreamSupport.stream(noteRepository.findAll().spliterator(), false)
                 .map(j -> noteMapper.toDTO(j))
                 .toList();
     }
 
-    @Override
-    public NoteDTO getById(long noteId) {
+    public NoteDTO getById(Long noteId) {
         NoteEntity fetchedNote = getNoteOrThrow(noteId);
         return noteMapper.toDTO(fetchedNote);
     }
 
-    @Override
+
     public void edit(NoteDTO note) {
         NoteEntity fetchedEntity = getNoteOrThrow(note.getNoteId());
         noteMapper.updateNoteEntity(note, fetchedEntity);
         noteRepository.save(fetchedEntity);
     }
 
-    private NoteEntity getNoteOrThrow(long noteId) {
+    private NoteEntity getNoteOrThrow(Long noteId) {
         return noteRepository
                 .findById(noteId)
                 .orElseThrow();
     }
 
-    @Override
-    public void remove(long noteId) {
+
+    public void remove(Long noteId) {
         NoteEntity fetchedEntity = getNoteOrThrow(noteId);
         noteRepository.delete(fetchedEntity);
     }
