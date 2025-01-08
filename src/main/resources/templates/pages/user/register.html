@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="cs-cz" xmlns:th="http://www.w3.org/1999/xhtml">
+<head></head>
+<body>
+<header></header>
+<div class="py-2 flash-message message-error" th:text="${error}" th:if="${error}"></div>
+<article>
+    <div>
+        <h3 class="mb-5">Registration</h3>
+        <section>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <form th:action="@{/account/register}" th:object="${userDTO}" method="post" class="d-flex flex-column gap-2">
+                        <!-- Flash message for errors -->
+                        <div th:if="${error != null}" class="alert alert-danger" role="alert">
+                            <p th:text="${error}"></p>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">User email</label>
+                            <input id="email" name="email" th:field="*{email}" class="form-control"/>
+                            <small class="text-danger" th:errors="*{email}"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input id="username" name="username" th:field="*{username}" class="form-control"/>
+                            <small class="text-danger" th:errors="*{username}"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input id="password" name="password" type="password" th:field="*{password}" class="form-control"/>
+                            <small class="text-danger" th:errors="*{password}"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm password</label>
+                            <input id="confirmPassword" name="confirmPassword" type="password" th:field="*{confirmPassword}" class="form-control"/>
+                            <small class="text-danger" th:errors="*{confirmPassword}"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-dark mb-3">Registration</button>
+                        </div>
+
+                        <div class="form-group">
+                            <p>
+                                <a class="btn btn-dark" th:href="@{/account/login}">Sign in</a>
+                            </p>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </section>
+    </div>
+</article>
+</body>
+</html>

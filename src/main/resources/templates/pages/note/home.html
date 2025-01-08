@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home </title>
+    <link rel="stylesheet" th:href="@{/styles/bootstrap.min.css}" type="text/css"/>
+
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div>
+            <h1>All Notes</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center m-3">
+        <div>
+            <h3>Title</h3>
+        </div>
+    </div>
+
+    <div th:each="note : ${notes}" class="row justify-content-center m-3">
+        <div class="col-10 d-flex justify-content-center">
+            <a th:href="@{/details/{noteId}(noteId=${note.noteId})}"
+               th:text="${note.title}"
+               style="display: block; width: 100%; text-decoration: none; color: inherit;">
+            </a>
+        </div>
+        <div class="col-2 d-flex justify-content-center">
+            <form method="post" th:action="@{/delete/{id}(id=${note.noteId})}">
+                <input type="hidden" name="_method" value="delete" />
+                <button class="btn btn-danger" type="submit">Delete</button>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="row justify-content-center m-3">
+        <div class="col-12 d-flex justify-content-center">
+            <a th:href="@{/create}" class="btn btn-success">Add New Note</a>
+        </div>
+    </div>
+</div>
+
+<form action="#" th:action="@{/account/logout}" method="post">
+    <button type="submit">Logout</button>
+</form>
+
+</body>
+</html>
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <title>Home Page</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Welcome to Home Page</h1>-->
+
+<!--<h2>Your Notes:</h2>-->
+<!--<ul>-->
+<!--    &lt;!&ndash; Iterace přes seznam poznámek &ndash;&gt;-->
+<!--    <li th:each="note : ${notes}">-->
+<!--        <span th:text="${note.title}">Note Title</span>:-->
+<!--        <span th:text="${note.description}">Note Description</span>-->
+<!--    </li>-->
+<!--</ul>-->
+
+<!--</body>-->
+<!--</html>-->

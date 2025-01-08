@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/styles/bootstrap.min.css}" type="text/css"/>
+    <title>Title</title>
+</head>
+<body>
+
+        <p th:href="@{/note/details/{noteId}(noteId=${notes.noteId})}" th:text="${notes.title}">></p>
+
+        <p th:href="@{/note/details/{noteId}(noteId=${notes.noteId})}" th:text="${notes.description}"></p>
+
+        <div class="col-lg-4 mt-3">
+            <a type="button" class="btn btn-dark" th:href="@{'/note/edit/' + ${noteId}}">Edit</a>
+        </div>
+
+
+
+
+</body>
+</html>

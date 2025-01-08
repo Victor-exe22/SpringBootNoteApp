@@ -1,19 +1,28 @@
 package it.network.note.dto;
 
 
+import it.network.note.data.entities.NoteEntity;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 
 public class NoteDTO {
 
-
     private Long noteId;
 
     @NotBlank(message = "Vypln")
+    @Size(max = 20)
     private String title;
 
     @NotBlank(message = "Vypln")
+    @Size(max = 30)
     private String description;
+
+    public NoteDTO(Long noteId, String title, String description) {
+        this.noteId = noteId;
+        this.title = title;
+        this.description = description;
+    }
 
     public Long getNoteId() {
         return noteId;
@@ -39,12 +48,5 @@ public class NoteDTO {
         this.title = title;
     }
 
-    @Override
-    public String toString() {
-        return "NoteDTO{" +
-                "noteId=" + noteId +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                '}';
-    }
+
 }
