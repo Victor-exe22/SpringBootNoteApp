@@ -27,11 +27,8 @@ public class NoteServiceImpl implements NoteService{
     @Autowired
     private UserRepository userRepository;
 
-
-
     @Override
     public void saveNewNote(NoteDTO note) {
-
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUserName = authentication.getName();
 
@@ -45,6 +42,12 @@ public class NoteServiceImpl implements NoteService{
         noteEntity.setTitle(note.getTitle());
 
         noteRepository.save(noteEntity);
+    }
+
+    @Override
+    public void delete(Long noteId) {
+
+        noteRepository.deleteById(noteId);
     }
 
     @Override
@@ -73,11 +76,7 @@ public class NoteServiceImpl implements NoteService{
                 .orElseThrow();
     }
 
-    @Override
-    public void delete(Long noteId) {
-        NoteEntity fetchedEntity = getNoteOrThrow(noteId);
-        noteRepository.delete(fetchedEntity);
-    }
+
 
     @Override
     public List<NoteDTO> getNotesByUserId(Long userId) {
@@ -97,6 +96,9 @@ public class NoteServiceImpl implements NoteService{
                 .map(note -> new NoteDTO(note.getNoteId(), note.getTitle(), note.getDescription()))
                 .collect(Collectors.toList());
     }
+
+
+
 
 
 

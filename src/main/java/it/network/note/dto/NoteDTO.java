@@ -15,7 +15,7 @@ public class NoteDTO {
     private String title;
 
     @NotBlank(message = "Vypln")
-    @Size(max = 30)
+    @Size(max = 50)
     private String description;
 
     public NoteDTO(Long noteId, String title, String description) {
