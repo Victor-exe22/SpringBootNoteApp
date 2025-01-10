@@ -6,19 +6,19 @@ import jakarta.validation.constraints.Size;
 
 public class UserDTO {
 
-    @NotBlank(message = "Enter your user name")
+    @NotBlank()
     private String username;
 
-    @NotBlank(message = "Enter your email")
+    @NotBlank()
     @Email()
     private String email;
 
     @NotBlank()
-    @Size(min = 6, message = "Password must be at least 6 characters long")
+    @Size(min = 6)
     private String password;
 
     @NotBlank()
-    @Size(min = 6, message = "Password must be at least 6 characters long")
+    @Size(min = 6)
     private String confirmPassword;
 
 

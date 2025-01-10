@@ -12,5 +12,5 @@ public interface NoteRepository extends JpaRepository<NoteEntity, Long> {
 
     List<NoteEntity> findByUser_UserId(Long userId);
 
-    List<NoteEntity> findByUserEmail(String username);
+
 }

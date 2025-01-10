@@ -8,7 +8,6 @@ public interface UserService extends UserDetailsService {
 
     void create(UserDTO user, boolean isAdmin);
 
-
     boolean validateLogin(String email, String rawPassword);
 
     boolean validateRegister(UserDTO userDTO);

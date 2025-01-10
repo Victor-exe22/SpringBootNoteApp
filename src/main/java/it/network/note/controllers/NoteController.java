@@ -3,6 +3,7 @@ package it.network.note.controllers;
 import it.network.note.data.entities.UserEntity;
 import it.network.note.dto.NoteDTO;
 import it.network.note.dto.mapper.NoteMapper;
+import it.network.note.service.NoteService;
 import it.network.note.service.NoteServiceImpl;
 import it.network.note.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,7 @@ import java.util.List;
 public class NoteController {
 
     @Autowired
-    private  NoteServiceImpl noteService;
-
-    @Autowired
-    private NoteMapper noteMapper;
+    private NoteService noteService;
 
     @Autowired
     private UserService userService;
@@ -52,7 +50,7 @@ public class NoteController {
     }
 
     @PostMapping("/create")
-    public String createNote(@Valid @ModelAttribute NoteDTO noteDTO,UserEntity user, BindingResult result) {
+    public String createNote(@Valid @ModelAttribute NoteDTO noteDTO, BindingResult result) {
         if (result.hasErrors()) {
             return "redirect:/create";
         }else {
@@ -69,50 +67,20 @@ public class NoteController {
 
     @GetMapping("/details")
     public String renderDetailPage(@RequestParam("noteId") Long noteId, Model model) {
-        // Kontrola, zda je uživatel přihlášen
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication == null || !authentication.isAuthenticated()) {
-            return "redirect:/login";  // Pokud není přihlášen, přesměruj na přihlašovací stránku
+            return "redirect:/login";
         }
 
-        // Získání poznámky podle ID
         NoteDTO note = noteService.getById(noteId);
 
-        // Pokud poznámka neexistuje, můžete přesměrovat na stránku s chybou
         if (note == null) {
-            return "redirect:/error";  // Můžete přesměrovat na stránku s chybou nebo jinam
+            return "redirect:/error";
         }
 
-        // Přidání poznámky do modelu pro zobrazení
         model.addAttribute("notes", note);
-        return "pages/note/details";  // Přejdeme na stránku s detaily poznámky
+        return "pages/note/details";
     }
-
-
-//    @GetMapping("/edit")
-//    public String renderEditPage(@PathVariable Long noteId, Model model) {
-//        NoteDTO fetchedNote = noteService.getById(noteId);
-//
-//        model.addAttribute("noteDTO", fetchedNote);
-//
-//        return "pages/note/edit";
-//    }
-//
-//    @PostMapping("/edit")
-//    public String editNote(@PathVariable Long noteId,
-//                           @Valid @ModelAttribute NoteDTO noteDTO,
-//                           BindingResult result,
-//                           Model model) {
-//
-//        if (result.hasErrors()) {
-//            model.addAttribute("noteDTO", noteDTO);
-//            return "pages/note/edit";
-//        }
-//
-//        noteDTO.setNoteId(noteId);
-//        noteService.edit(noteDTO);
-//        return "redirect:/home";
-//    }
 }
 
 

@@ -16,7 +16,7 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-12 d-flex justify-content-center">
-                            <input type="text" id="title" class="form-control" th:field="*{title}" />
+                            <input type="text" id="title" class="form-control" th:field="*{title}" placeholder="Enter title" required />
                             <small class="text-danger" th:errors="*{title}"></small>
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                     </div>
                     <div class="row">
                         <div class="form-group mt-3 col-12 d-flex justify-content-center">
-                            <input type="text" id="description" class="form-control" th:field="*{description}" />
+                            <input type="text" id="description" class="form-control" th:field="*{description}" placeholder="Enter description" required />
                             <small class="text-danger" th:errors="*{description}"></small>
                         </div>
                     </div>

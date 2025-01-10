@@ -51,22 +51,9 @@ public class NoteServiceImpl implements NoteService{
     }
 
     @Override
-    public List<NoteDTO> getAll() {
-        return StreamSupport.stream(noteRepository.findAll().spliterator(), false)
-                .map(j -> noteMapper.toDTO(j))
-                .toList();
-    }
-    @Override
     public NoteDTO getById(Long noteId) {
         NoteEntity fetchedNote = getNoteOrThrow(noteId);
         return noteMapper.toDTO(fetchedNote);
-    }
-
-    @Override
-    public void edit(NoteDTO note) {
-        NoteEntity fetchedEntity = getNoteOrThrow(note.getNoteId());
-        noteMapper.updateNoteEntity(note, fetchedEntity);
-        noteRepository.save(fetchedEntity);
     }
 
     @Override
@@ -75,8 +62,6 @@ public class NoteServiceImpl implements NoteService{
                 .findById(noteId)
                 .orElseThrow();
     }
-
-
 
     @Override
     public List<NoteDTO> getNotesByUserId(Long userId) {
@@ -87,22 +72,4 @@ public class NoteServiceImpl implements NoteService{
                 .collect(Collectors.toList());
 
     }
-
-    @Override
-    public List<NoteDTO> getNotesByUsername(String username) {
-        List<NoteEntity> notes = noteRepository.findByUserEmail(username);
-
-        return notes.stream()
-                .map(note -> new NoteDTO(note.getNoteId(), note.getTitle(), note.getDescription()))
-                .collect(Collectors.toList());
-    }
-
-
-
-
-
-
-
-
-
 }

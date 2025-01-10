@@ -8,17 +8,9 @@ import java.util.List;
 
 public interface NoteService  {
 
-
-
-
-
     void saveNewNote(NoteDTO note);
 
-    List<NoteDTO> getAll();
-
     NoteDTO getById(Long noteId);
-
-    void edit(NoteDTO note);
 
     NoteEntity getNoteOrThrow(Long noteId);
 
@@ -26,5 +18,4 @@ public interface NoteService  {
 
     List<NoteDTO> getNotesByUserId(Long userId);
 
-    List<NoteDTO> getNotesByUsername(String username);
 }
