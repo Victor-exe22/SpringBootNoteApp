@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="cs-cz" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="~{fragments/layout.html :: head}">
+    <title>Register</title>
+</head>
+
+<body>
+<header>
+    <!-- Můžete přidat hlavičku zde, pokud je potřeba -->
+</header>
+
+<!-- Flash Message for Errors -->
+<div class="py-2 flash-message message-error" th:text="${error}" th:if="${error}"></div>
+
+<article>
+    <div class="container mt-5">
+        <h3 class="text-center mb-5">Registration</h3>
+        <section>
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-4">
+
+                    <form th:action="@{/account/register}" th:object="${userDTO}" method="post" class="d-flex flex-column gap-3">
+                        <!-- Flash message for errors -->
+                        <div th:if="${error != null}" class="alert alert-danger" role="alert">
+                            <p th:text="${error}"></p>
+                        </div>
+
+                        <!-- Email input -->
+                        <div class="form-group">
+                            <label for="email">User Email</label>
+                            <input id="email" name="email" th:field="*{email}" class="form-control" placeholder="Enter your email" required />
+                            <small class="text-danger" th:errors="*{email}"></small>
+                        </div>
+
+                        <!-- Username input -->
+                        <div class="form-group">
+                            <label for="username">Username</label>
+                            <input id="username" name="username" th:field="*{username}" class="form-control" placeholder="Enter your username" required />
+                            <small class="text-danger" th:errors="*{username}"></small>
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input id="password" name="password" type="password" th:field="*{password}" class="form-control" placeholder="Enter your password" required />
+                            <small class="text-danger" th:errors="*{password}"></small>
+                        </div>
+
+                        <!-- Confirm Password input -->
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input id="confirmPassword" name="confirmPassword" type="password" th:field="*{confirmPassword}" class="form-control" placeholder="Confirm your password" required />
+                            <small class="text-danger" th:errors="*{confirmPassword}"></small>
+                        </div>
+
+                        <!-- Submit button -->
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-dark mb-3">Register</button>
+                        </div>
+
+                        <!-- Sign in link -->
+                        <div class="form-group text-center">
+                            <p>
+                                <a class="btn btn-outline-dark" th:href="@{/account/login}">Sign In</a>
+                            </p>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </section>
+    </div>
+</article>
+
+</body>
+</html>

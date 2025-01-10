@@ -1,19 +1,30 @@
 package it.network.note.service;
 
+import it.network.note.data.entities.NoteEntity;
+import it.network.note.data.entities.UserEntity;
 import it.network.note.dto.NoteDTO;
 
 import java.util.List;
-import java.util.Locale;
 
-public interface NoteService {
+public interface NoteService  {
 
-    void create(NoteDTO noteDTO);
+
+
+
+
+    void saveNewNote(NoteDTO note);
 
     List<NoteDTO> getAll();
 
-    NoteDTO getById(long noteId);
+    NoteDTO getById(Long noteId);
 
-    void edit(NoteDTO noteDTO);
+    void edit(NoteDTO note);
 
-    void remove(long noteId);
+    NoteEntity getNoteOrThrow(Long noteId);
+
+    void delete(Long noteId);
+
+    List<NoteDTO> getNotesByUserId(Long userId);
+
+    List<NoteDTO> getNotesByUsername(String username);
 }
