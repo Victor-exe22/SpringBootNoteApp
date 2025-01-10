@@ -10,11 +10,11 @@ public class NoteDTO {
 
     private Long noteId;
 
-    @NotBlank(message = "Vypln")
+    @NotBlank()
     @Size(max = 20)
     private String title;
 
-    @NotBlank(message = "Vypln")
+    @NotBlank()
     @Size(max = 50)
     private String description;
 
