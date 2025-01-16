@@ -11,9 +11,9 @@ Každý uživatel vidí pouze své vlastní poznámky
 
 
 <p align="center">
-  <img src="https://github.com/Victor-exe22/NoteApp/blob/5cfb7f750b09e65ef1c613b51f6489044831f07b/Screenshot%202025-01-16%20122632.png" width="300" />
-  <img src="https://github.com/Victor-exe22/NoteApp/blob/5cfb7f750b09e65ef1c613b51f6489044831f07b/Screenshot%202025-01-16%20122645.png" width="300" />
-  <img src="https://github.com/Victor-exe22/NoteApp/blob/5cfb7f750b09e65ef1c613b51f6489044831f07b/Screenshot%202025-01-16%20122759.png" width="300" />
-  <img src="https://github.com/Victor-exe22/NoteApp/blob/5cfb7f750b09e65ef1c613b51f6489044831f07b/Screenshot%202025-01-16%20122815.png" width="300" />
-  <img src="https://github.com/Victor-exe22/NoteApp/blob/5cfb7f750b09e65ef1c613b51f6489044831f07b/Screenshot%202025-01-16%20122827.png" width="300" />
+  <img src="https://github.com/Victor-exe22/SpringBootNoteApp/blob/b398b60d2a87150c74d77398953afb87e768e027/Screenshot%202025-01-16%20122632.png" width="300" />
+  <img src="https://github.com/Victor-exe22/SpringBootNoteApp/blob/b398b60d2a87150c74d77398953afb87e768e027/Screenshot%202025-01-16%20122645.png" width="300" />
+  <img src="https://github.com/Victor-exe22/SpringBootNoteApp/blob/b398b60d2a87150c74d77398953afb87e768e027/Screenshot%202025-01-16%20122759.png" width="300" />
+  <img src="https://github.com/Victor-exe22/SpringBootNoteApp/blob/b398b60d2a87150c74d77398953afb87e768e027/Screenshot%202025-01-16%20122815.png" width="300" />
+  <img src="https://github.com/Victor-exe22/SpringBootNoteApp/blob/b398b60d2a87150c74d77398953afb87e768e027/Screenshot%202025-01-16%20122827.png"  width="300"/>
 </p>
