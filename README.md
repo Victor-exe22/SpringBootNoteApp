@@ -2,12 +2,12 @@ SpringBoot NoteApp
 
 My last project is a simple application for adding personal notes.
 The project first requires login or registration, and after that,
-the user can add and delete their notes. Each user can only see their own notes
+the user can add and delete their notes. Each user can only see their own notes.
 
 Můj poslední projekt je jednoduchá aplikace pro přidávání osobních poznámek.
 Projekt nejprve vyžaduje přihlášení nebo registraci,
 poté může uživatel přidávat a mazat své poznámky. 
-Každý uživatel vidí pouze své vlastní poznámky
+Každý uživatel vidí pouze své vlastní poznámky.
 
 
 <p align="center">
